@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apna AI Pro | History Guard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="preloader" id="loader">
+    <div style="font-size:3rem; font-weight:800;">APNA <span style="background:var(--accent-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">AI</span></div>
+    <div class="bar-container"><div class="bar-fill"></div></div>
+    <div class="loading-text">Loading...</div>
+</div>
+
+<div class="modal-overlay" id="name-modal-overlay">
+    <div class="name-modal" id="name-modal">
+        <h2>Pehchaan Kaun?</h2>
+        <p>Bhai, apna naam toh likh de taaki hum baat shuru kar sakein!</p>
+        <input type="text" id="user-name-input" class="name-input" placeholder="Tera Naam Yahan..." autocomplete="off">
+        <button class="name-btn" onclick="saveUserName()">Chalo Shuru Karein!</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="confirm-modal-overlay" style="z-index: 12000;">
+    <div class="name-modal" id="confirm-modal">
+        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ff4d4d; margin-bottom: 20px;"></i>
+        <h2>Are you sure?</h2>
+        <p>Bhai, saari purani yaadein (history) mit jayengi. Pakka uda doon?</p>
+        <div style="display: flex; gap: 10px;">
+            <button class="name-btn" style="background: #333;" onclick="closeConfirmModal()">Nahi, Rehne De</button>
+            <button class="name-btn" style="background: #ff4d4d;" onclick="executeClearStorage()">Haan, Uda Do!</button>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<div class="sidebar" id="sidebar">
+    <h3 style="margin-bottom:20px;">Saved Chats</h3>
+    <div class="history-list" id="hist-list"></div>
+    <button onclick="showConfirmModal()" style="color:#ff4d4d; background:none; border:none; cursor:pointer; font-size:0.8rem; margin-top: 10px;">Clear All History</button>
+</div>
+
+<div class="main-app" id="app">
+    <header class="header">
+        <div class="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
+        <div id="user-display" style="font-weight: 800; font-size: 0.9rem; color: var(--text-dim);"></div>
+        <div class="new-chat-btn" onclick="startNewChat()">
+            <i class="fas fa-edit"></i> <span>New</span>
+        </div>
+    </header>
+    <div class="chat-view" id="chat-view"></div>
+    <div class="input-section">
+        <label class="image-gen-box" for="img-toggle">
+            <span><i class="fas fa-magic" style="color:var(--accent)"></i> Image Generation Mode</span>
+            <div class="switch"><input type="checkbox" id="img-toggle"><span class="slider"></span></div>
+        </label>
+        <div class="input-wrapper">
+            <label for="img-in" class="btn plus-btn"><i class="fas fa-plus"></i></label>
+            <input type="file" id="img-in" hidden accept="image/*" onchange="handleImg(event)">
+            <textarea id="msg-in" placeholder="Ask or generate image..." rows="1"></textarea>
+            <button class="send-btn" onclick="sendMsg()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
